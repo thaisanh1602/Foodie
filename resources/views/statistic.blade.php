@@ -105,92 +105,35 @@
     </nav>
     <!-- Navbar -->
 
-    <header>
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-body">
-            <div class="container-fluid">
-                <button
-                    data-mdb-collapse-init
-                    class="navbar-toggler"
-                    type="button"
-                    data-mdb-target="#navbarExample01"
-                    aria-controls="navbarExample01"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </nav>
-        <!-- Navbar -->
+     <div class="container my-5">
+    <h2 class="mb-4 text-center">Thống kê gợi ý món ăn</h2>
 
+    <div class="row">
+      <!-- Biểu đồ số lượng món theo loại -->
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-header text-center">
+            Số lượng món theo loại
+          </div>
+          <div class="card-body">
+            <canvas id="chartCategory"></canvas>
+          </div>
+        </div>
+      </div>
 
-        <!-- Background image -->
-     <div
-    id="intro-example"
-    class="p-5 text-center text-white d-flex align-items-center justify-content-center"
-    style="
-        background-image: url('/public/images/pile-vegetables-green-background-generative-ai-design-instagram-facebook-wall-painting-wallpaper-art-photo-325567806.webp');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 100vh;
-    "
->
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
-      <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="text-white">
-          <h1 class="mb-3">Thống kê</h1>
-          <h5 class="mb-4">Best & free guide of responsive web design</h5>
-          <a
-            data-mdb-ripple-init
-            class="btn btn-outline-light btn-lg m-2"
-            href="https://www.youtube.com/watch?v=c9B4TPnak1A"
-            role="button"
-            rel="nofollow"
-            target="_blank"
-          >Start tutorial</a
-          >
-          <a
-            data-mdb-ripple-init
-            class="btn btn-outline-light btn-lg m-2"
-            href="https://mdbootstrap.com/docs/standard/"
-            target="_blank"
-            role="button"
-          >Download MDB UI KIT</a
-          >
+      <!-- Biểu đồ số lượt gợi ý theo món -->
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-header text-center">
+            Số lượt gợi ý theo món
+          </div>
+          <div class="card-body">
+            <canvas id="chartSuggestions"></canvas>
+          </div>
         </div>
       </div>
     </div>
   </div>
-        <!-- Background image -->
-    </header>
-
-    <section class="hero py-5">
-        <div class="container text-center">
-            <h1 class="h2 mb-3">Tiêu đề ngắn, ấn tượng</h1>
-            <p class="text-muted mb-4">Mô tả ngắn gọn về sản phẩm hoặc dịch vụ của bạn.</p>
-            <a class="btn btn-primary" href="#">Bắt đầu</a>
-        </div>
-    </section>
-
-    <section class="py-4">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-4">
-                    <h6>Nhanh</h6>
-                    <p class="small text-muted">Tốc độ tải tốt</p>
-                </div>
-                <div class="col-4">
-                    <h6>Đẹp</h6>
-                    <p class="small text-muted">Thiết kế tối giản</p>
-                </div>
-                <div class="col-4">
-                    <h6>Dễ dùng</h6>
-                    <p class="small text-muted">Tùy chỉnh nhanh</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="text-center text-lg-start bg-body-tertiary text-muted">
