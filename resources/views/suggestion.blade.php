@@ -106,90 +106,98 @@
     <!-- Navbar -->
 
     <header>
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-body">
-            <div class="container-fluid">
-                <button
-                    data-mdb-collapse-init
-                    class="navbar-toggler"
-                    type="button"
-                    data-mdb-target="#navbarExample01"
-                    aria-controls="navbarExample01"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </nav>
-        <!-- Navbar -->
+    
+    </header>
 
-        <!-- Background image -->
-     <div
-    id="intro-example"
-    class="p-5 text-center text-white d-flex align-items-center justify-content-center"
-    style="
-        background-image: url('/public/images/pile-vegetables-green-background-generative-ai-design-instagram-facebook-wall-painting-wallpaper-art-photo-325567806.webp');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 100vh;
-    "
->
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
-      <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="text-white">
-          <h1 class="mb-3">Gợi ý món ăn</h1>
-          <h5 class="mb-4">Best & free guide of responsive web design</h5>
-          <a
-            data-mdb-ripple-init
-            class="btn btn-outline-light btn-lg m-2"
-            href="https://www.youtube.com/watch?v=c9B4TPnak1A"
-            role="button"
-            rel="nofollow"
-            target="_blank"
-          >Start tutorial</a
-          >
-          <a
-            data-mdb-ripple-init
-            class="btn btn-outline-light btn-lg m-2"
-            href="https://mdbootstrap.com/docs/standard/"
-            target="_blank"
-            role="button"
-          >Download MDB UI KIT</a
-          >
+    <section class="hero">
+  <div class="container">
+    <h1 class="display-5">Biến nguyên liệu sẵn có thành bữa ăn ngon!</h1>
+    <p class="lead">Khám phá hàng trăm công thức dễ làm ngay hôm nay</p>
+  </div>
+</section>
+<!-- Search Section -->
+<section class="py-4 bg-light">
+  <div class="container">
+    <form class="d-flex" role="search">
+      <input 
+        class="form-control me-2 " 
+        type="search" 
+        placeholder="Tìm món ăn..." 
+        aria-label="Search"
+        style="max-width: 400px;"
+      />
+      <button class="btn btn-success" type="submit">
+        Tìm
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- Filter Section -->
+<section class="filter-section container">
+  <h3>Lọc món ăn</h3>
+  <div class="row g-3">
+    <div class="col-md-4">
+      <select class="form-select">
+        <option selected>Chọn loại món</option>
+        <option>Món chính</option>
+        <option>Món phụ</option>
+        <option>Tráng miệng</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select class="form-select">
+        <option selected>Chọn nguyên liệu</option>
+        <option>Thịt</option>
+        <option>Rau củ</option>
+        <option>Hải sản</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-primary w-100">Áp dụng lọc</button>
+    </div>
+  </div>
+</section>
+
+<!-- Food Suggestions Section -->
+<section class="container my-5">
+  <h3>Món gợi ý cho bạn</h3>
+  <div class="row g-4">
+    <!-- Card 1 -->
+    <div class="col-md-4">
+      <div class="card food-card">
+        <img src="https://source.unsplash.com/400x300/?pasta" class="card-img-top" alt="Món ăn">
+        <div class="card-body">
+          <h5 class="card-title">Mỳ Ý sốt bò bằm</h5>
+          <p class="card-text">⏱ 30 phút | 🟢 Dễ</p>
+          <a href="#" class="btn btn-success w-100">Xem công thức</a>
+        </div>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="col-md-4">
+      <div class="card food-card">
+        <img src="https://source.unsplash.com/400x300/?salad" class="card-img-top" alt="Món ăn">
+        <div class="card-body">
+          <h5 class="card-title">Salad rau củ tươi</h5>
+          <p class="card-text">⏱ 15 phút | 🟢 Rất dễ</p>
+          <a href="#" class="btn btn-success w-100">Xem công thức</a>
+        </div>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="col-md-4">
+      <div class="card food-card">
+        <img src="https://source.unsplash.com/400x300/?dessert" class="card-img-top" alt="Món ăn">
+        <div class="card-body">
+          <h5 class="card-title">Bánh flan caramen</h5>
+          <p class="card-text">⏱ 40 phút | 🟡 Trung bình</p>
+          <a href="#" class="btn btn-success w-100">Xem công thức</a>
         </div>
       </div>
     </div>
   </div>
-        <!-- Background image -->
-    </header>
-
-    <section class="hero py-5">
-        <div class="container text-center">
-            <h1 class="h2 mb-3">Tiêu đề ngắn, ấn tượng</h1>
-            <p class="text-muted mb-4">Mô tả ngắn gọn về sản phẩm hoặc dịch vụ của bạn.</p>
-            <a class="btn btn-primary" href="#">Bắt đầu</a>
-        </div>
-    </section>
-
-    <section class="py-4">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-4">
-                    <h6>Nhanh</h6>
-                    <p class="small text-muted">Tốc độ tải tốt</p>
-                </div>
-                <div class="col-4">
-                    <h6>Đẹp</h6>
-                    <p class="small text-muted">Thiết kế tối giản</p>
-                </div>
-                <div class="col-4">
-                    <h6>Dễ dùng</h6>
-                    <p class="small text-muted">Tùy chỉnh nhanh</p>
-                </div>
-            </div>
-        </div>
-    </section>
+</section>
 
     <!-- Footer -->
     <footer class="text-center text-lg-start bg-body-tertiary text-muted">

@@ -185,9 +185,9 @@
         <!-- Background image -->
     </header>
 
-    <section class="hero py-5 bg-success text-white">
+    <section class="hero py-5 text-white">
         <div class="container text-center">
-            <h1 class="h2 mb-3">Chào mừng bạn đến với Foodie!</h1>
+            <h1 class="h2 text-muted mb-3">Chào mừng bạn đến với Foodie!</h1>
             <p class="text-muted mb-4">Bữa ăn tuyệt vời không phải là ngẫu nhiên, đó là một lựa chọn! — Chấm dứt sự phân vân, bắt đầu hành trình biến mọi nguyên liệu thành những kiệt tác ẩm thực với gợi ý món ăn đầy năng lượng từ chúng tôi.</p>
             <a class="btn btn-primary" href="#">Bắt đầu</a>
 
