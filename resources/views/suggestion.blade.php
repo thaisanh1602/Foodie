@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Trang chủ</title>
+    <title>Gợi ý món ăn</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -124,114 +124,108 @@
         <!-- Navbar -->
 
         <!-- Background image -->
-     <!-- Carousel -->
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
-
-  <!-- Indicators/dots -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-  </div>
-
-  <!-- The slideshow/carousel -->
-<div class="carousel-inner">
-    <!-- Slide 1 -->
-    <div class="carousel-item active">
-        <img src="{{ asset('images/homepage1.jpg') }}" 
-             class="d-block w-100" 
-             alt="Món ăn ngon"
-             style="height: 80vh; object-fit: cover;">
-             <div class="carousel-caption">
-    <h3>Món ngon mỗi ngày</h3>
-    <p>Hôm nay ăn gì? Khám phá ngay!</p>
-  </div>
-             
+     <div
+    id="intro-example"
+    class="p-5 text-center text-white d-flex align-items-center justify-content-center"
+    style="
+        background-image: url('/public/images/pile-vegetables-green-background-generative-ai-design-instagram-facebook-wall-painting-wallpaper-art-photo-325567806.webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+    "
+>
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <h1 class="mb-3">Gợi ý món ăn</h1>
+          <h5 class="mb-4">Best & free guide of responsive web design</h5>
+          <a
+            data-mdb-ripple-init
+            class="btn btn-outline-light btn-lg m-2"
+            href="https://www.youtube.com/watch?v=c9B4TPnak1A"
+            role="button"
+            rel="nofollow"
+            target="_blank"
+          >Start tutorial</a
+          >
+          <a
+            data-mdb-ripple-init
+            class="btn btn-outline-light btn-lg m-2"
+            href="https://mdbootstrap.com/docs/standard/"
+            target="_blank"
+            role="button"
+          >Download MDB UI KIT</a
+          >
+        </div>
+      </div>
     </div>
-
-    <!-- Slide 2 -->
-    <div class="carousel-item">
-        <img src="{{ asset('images/homepage2.jpg') }}" 
-             class="d-block w-100" 
-             alt="Ẩm thực Việt Nam"
-             style="height: 80vh; object-fit: cover;">
-             <div class="carousel-caption">
-    <h3>Đánh vào sự tiện lợi</h3>
-    <p>Bí ý tưởng bữa ăn? Để chúng tôi gợi ý món ngon cho bạn!</p>
   </div>
-    </div>
-
-    <!-- Slide 3 -->
-    <div class="carousel-item">
-        <img src="{{ asset('images/homepage3.jpg') }}" 
-             class="d-block w-100" 
-             alt="Món ăn hấp dẫn"
-             style="height: 80vh; object-fit: cover;">
-             <div class="carousel-caption">
-    <h3>Nhấn mạnh sự đa dạng</h3>
-    <p>Thế giới ẩm thực trong tầm tay. Gợi ý món ăn phong phú, mới lạ mỗi ngày!</p>
-  </div>
-    </div>
-</div>
-
-  <!-- Left and right controls/icons -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
         <!-- Background image -->
     </header>
 
-    <section class="hero py-5 bg-success text-white">
+    <section class="hero py-5">
         <div class="container text-center">
-            <h1 class="h2 mb-3">Chào mừng bạn đến với Foodie!</h1>
-            <p class="text-muted mb-4">Bữa ăn tuyệt vời không phải là ngẫu nhiên, đó là một lựa chọn! — Chấm dứt sự phân vân, bắt đầu hành trình biến mọi nguyên liệu thành những kiệt tác ẩm thực với gợi ý món ăn đầy năng lượng từ chúng tôi.</p>
+            <h1 class="h2 mb-3">Tiêu đề ngắn, ấn tượng</h1>
+            <p class="text-muted mb-4">Mô tả ngắn gọn về sản phẩm hoặc dịch vụ của bạn.</p>
             <a class="btn btn-primary" href="#">Bắt đầu</a>
-
-            <section class="py-4">
-        <div class="container">
-           <div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card h-100">
-      <img src="{{ asset('images/vegetables.jpg') }}"  class="card-img-top" alt="..." style="height: 250px; object-fit: cover;">
-      <div class="card-body">
-        <h5 class="card-title">Rau củ quả</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="{{ asset('images/meat.jpg') }}"  class="card-img-top" alt="..." style="height: 250px; object-fit: cover;">
-      <div class="card-body">
-        <h5 class="card-title">Thịt</h5>
-        <p class="card-text">This is a short card.</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="{{ asset('images/fish.jpg') }}"  class="card-img-top" alt="..." style="height: 250px; object-fit: cover;">
-      <div class="card-body">
-        <h5 class="card-title">Cá</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-      </div>
-    </div>
-  </div>
-</div>
         </div>
     </section>
-        
+
+    <section class="py-4">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-4">
+                    <h6>Nhanh</h6>
+                    <p class="small text-muted">Tốc độ tải tốt</p>
+                </div>
+                <div class="col-4">
+                    <h6>Đẹp</h6>
+                    <p class="small text-muted">Thiết kế tối giản</p>
+                </div>
+                <div class="col-4">
+                    <h6>Dễ dùng</h6>
+                    <p class="small text-muted">Tùy chỉnh nhanh</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="text-center text-lg-start bg-body-tertiary text-muted">
         <!-- Section: Social media -->
-       
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
         <!-- Section: Links  -->
         <section class="">
             <div class="container text-center text-md-start mt-5">
