@@ -94,10 +94,15 @@
                 <li class="nav-item me-3">
                     <a class="nav-link" href="#">Về chúng tôi</a>
                 </li>
-                <li class="nav-item me-2">
+                <li class="nav-item me-3">
                     <a class="btn btn-primary btn-sm px-3 py-2 align-self-center" href="#">Đăng ký</a>
                 </li>
             </ul>
+            <a data-mdb-dropdown-init class="nav-link d-flex align-items-center" href="#"
+            id="navbarDropdownMenuLink" role="button" aria-expanded="false">
+            <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="37" alt="Avatar"
+              loading="lazy" />
+          </a>
         </div>
             <!-- Right elements -->
         </div>
