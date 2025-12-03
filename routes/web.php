@@ -10,3 +10,7 @@ Route::get('/suggestion', [SuggestionController::class, 'index'])->name('suggest
 Route::get('/statistic', [StatisticController::class, 'index'])->name('statistic'); 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
