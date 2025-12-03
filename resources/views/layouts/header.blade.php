@@ -27,30 +27,46 @@
                 </a>
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @if(!Auth::check() || (Auth::check() && Auth::user()->typeUser == 'user'))
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
                             href="{{ route('home') }}">
                             Trang chủ
                         </a>
                     </li>
+                    @endif
+                    @if(!Auth::check() || (Auth::check() && Auth::user()->typeUser == 'user'))
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('suggestion') ? 'active' : '' }}"
                             href="{{ route('suggestion') }}">
                             Gợi ý món ăn
                         </a>
                     </li>
+                    @endif
+                    @if(!Auth::check() || (Auth::check() && Auth::user()->typeUser == 'user'))
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('community') ? 'active' : '' }}"
                             href="{{ route('community') }}">
                             Cộng đồng
                         </a>
                     </li>
+                    @if(!Auth::check() || (Auth::check() && Auth::user()->typeUser == 'user'))
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('statistic') ? 'active' : '' }}"
+                            href="{{ route('statistic') }}">
+                            Đăng bài
+                        </a>
+                    </li>
+                    @endif
+                    @endif
+                    @if(Auth::check() && Auth::user()->typeUser == 'admin')
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('statistic') ? 'active' : '' }}"
                             href="{{ route('statistic') }}">
                             Thống kê
                         </a>
                     </li>
+                    @endif
                 </ul>
                 <!-- Left links -->
             </div>

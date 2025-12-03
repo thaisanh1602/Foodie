@@ -44,11 +44,7 @@
                 {{-- or use code below: @section('content') @show --}}
             </div><!--content-->
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                @include('layouts.footer')
-            </div><!--footer-->
-        </div>
+
     </div>
 </body>
 
