@@ -68,7 +68,7 @@
              style="height: 80vh; object-fit: cover;">
              <div class="carousel-caption">
     <h3>Đánh vào sự tiện lợi</h3>
-    <p>Bí ý tưởng bữa ăn? Để chúng tôi gợi ý món ngon cho bạn!</p>
+    <p>Bí ý tưởng bữa ăn? Để chúng tôi gợi ý món ngon cho bạn !</p>
   </div>
     </div>
 

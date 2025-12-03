@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class SuggestionController extends Controller
+class CommunityController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $ingredients = DB::table('ingredients')->get();
-        return view('suggestion', compact('ingredients'));
+        return view ('community');
     }
 
     /**
