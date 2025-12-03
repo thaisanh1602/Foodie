@@ -20,12 +20,12 @@ return new class extends Migration
             $table->primary(['postID', 'userID']);
 
             $table->foreign('postID')
-                  ->references('postID')->on('posts')
-                  ->onDelete('cascade');
+                ->references('postID')->on('posts')
+                ->onDelete('cascade');
 
             $table->foreign('userID')
-                  ->references('userID')->on('users')
-                  ->onDelete('cascade');
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 

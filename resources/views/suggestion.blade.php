@@ -32,7 +32,7 @@
 
   <!--Header-->
   <div>
-    @include('layout.header')
+    @include('layouts.header')
   </div>
 
   <section class="hero">

@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
-             $table->increments('postID');
+            $table->increments('postID');
             $table->string('title');
             $table->text('content')->nullable();
             $table->integer('userID')->unsigned()->nullable();
@@ -21,10 +21,10 @@ return new class extends Migration
             $table->dateTime('createdAt')->default(DB::raw('CURRENT_TIMESTAMP'));
 
             $table->foreign('userID')
-                  ->references('userID')->on('users');
+                ->references('id')->on('users');
 
             $table->foreign('foodID')
-                  ->references('foodID')->on('foods');
+                ->references('foodID')->on('foods');
         });
     }
 

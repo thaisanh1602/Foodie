@@ -13,17 +13,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comments', function (Blueprint $table) {
-           $table->increments('commentID');
+            $table->increments('commentID');
             $table->integer('postID')->unsigned();
             $table->integer('userID')->unsigned();
             $table->text('content')->nullable();
             $table->dateTime('createdAt')->default(DB::raw('CURRENT_TIMESTAMP'));
 
             $table->foreign('postID')
-                  ->references('postID')->on('posts');
+                ->references('postID')->on('posts');
 
             $table->foreign('userID')
-                  ->references('userID')->on('users');
+                ->references('id')->on('users');
         });
     }
 

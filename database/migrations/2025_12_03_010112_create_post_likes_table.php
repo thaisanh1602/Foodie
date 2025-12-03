@@ -12,18 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('post_likes', function (Blueprint $table) {
-           $table->integer('postID')->unsigned();
+            $table->integer('postID')->unsigned();
             $table->integer('userID')->unsigned();
 
             $table->primary(['postID', 'userID']);
 
             $table->foreign('postID')
-                  ->references('postID')->on('posts')
-                  ->onDelete('cascade');
+                ->references('postID')->on('posts')
+                ->onDelete('cascade');
 
             $table->foreign('userID')
-                  ->references('userID')->on('users')
-                  ->onDelete('cascade');
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 

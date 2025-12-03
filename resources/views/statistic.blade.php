@@ -32,38 +32,38 @@
 
     <!--Header-->
     <div>
-        @include('layout.header')
+        @include('layouts.header')
     </div>
 
-     <div class="container my-5">
-    <h2 class="mb-4 text-center">Thống kê gợi ý món ăn</h2>
+    <div class="container my-5">
+        <h2 class="mb-4 text-center">Thống kê gợi ý món ăn</h2>
 
-    <div class="row">
-      <!-- Biểu đồ số lượng món theo loại -->
-      <div class="col-md-6 mb-4">
-        <div class="card shadow-sm">
-          <div class="card-header text-center">
-            Số lượng món theo loại
-          </div>
-          <div class="card-body">
-            <canvas id="chartCategory"></canvas>
-          </div>
-        </div>
-      </div>
+        <div class="row">
+            <!-- Biểu đồ số lượng món theo loại -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center">
+                        Số lượng món theo loại
+                    </div>
+                    <div class="card-body">
+                        <canvas id="chartCategory"></canvas>
+                    </div>
+                </div>
+            </div>
 
-      <!-- Biểu đồ số lượt gợi ý theo món -->
-      <div class="col-md-6 mb-4">
-        <div class="card shadow-sm">
-          <div class="card-header text-center">
-            Số lượt gợi ý theo món
-          </div>
-          <div class="card-body">
-            <canvas id="chartSuggestions"></canvas>
-          </div>
+            <!-- Biểu đồ số lượt gợi ý theo món -->
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center">
+                        Số lượt gợi ý theo món
+                    </div>
+                    <div class="card-body">
+                        <canvas id="chartSuggestions"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
     <!-- Footer -->
     <footer class="text-center text-lg-start bg-body-tertiary text-muted">
