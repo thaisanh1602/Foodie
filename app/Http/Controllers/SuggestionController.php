@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SuggestionController extends Controller
 {
@@ -11,7 +12,8 @@ class SuggestionController extends Controller
      */
     public function index()
     {
-        return view('suggestion');
+        $ingredients = DB::table('ingredients')->get();
+        return view('suggestion', compact('ingredients'));
     }
 
     /**
