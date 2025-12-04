@@ -53,7 +53,7 @@
                     @if(!Auth::check() || (Auth::check() && Auth::user()->typeUser == 'user'))
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('statistic') ? 'active' : '' }}"
-                            href="{{ route('statistic') }}">
+                            href="{{ route('post') }}">
                             Đăng bài
                         </a>
                     </li>
