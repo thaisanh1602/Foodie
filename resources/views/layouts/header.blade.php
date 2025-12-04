@@ -105,11 +105,13 @@ document.getElementById('logout-form').submit();">
                     </li>
                     @endguest
                 </ul>
-                <a data-mdb-dropdown-init class="nav-link d-flex align-items-center" href="#"
-                    id="navbarDropdownMenuLink" role="button" aria-expanded="false">
+                @if( (Auth::check() && Auth::user()->typeUser == 'user'))
+                <a data-mdb-dropdown-init class="nav-link d-flex align-items-center"
+                    id="navbarDropdownMenuLink" role="button" aria-expanded="false" href="{{route('profile')}}">
                     <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="37" alt="Avatar"
                         loading="lazy" />
                 </a>
+                @endif
             </div>
             <!-- Right elements -->
         </div>

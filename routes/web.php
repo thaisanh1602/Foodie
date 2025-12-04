@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/suggestion', [SuggestionController::class, 'index'])->name('suggestion');
@@ -22,3 +23,5 @@ Route::resource('foods', FoodController::class);
 Auth::routes();
 Route::get('/post', [PostController::class, 'index'])->name('post');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
