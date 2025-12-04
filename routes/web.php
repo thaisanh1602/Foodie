@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\DB;
+
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -24,4 +26,9 @@ Auth::routes();
 Route::get('/post', [PostController::class, 'index'])->name('post');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Luu mon an
+Route::post('/foods/suggest', [FoodController::class, 'suggestByIngredients'])->name('foods.suggest');
+Route::post('/foods/save', [FoodController::class, 'save'])->name('foods.save');
+
+Route::resource('foods', FoodController::class);
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
