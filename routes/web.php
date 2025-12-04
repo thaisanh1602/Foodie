@@ -11,6 +11,7 @@ use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/suggestion', [SuggestionController::class, 'index'])->name('suggestion');
@@ -30,3 +31,4 @@ Route::post('/foods/suggest', [FoodController::class, 'suggestByIngredients'])->
 Route::post('/foods/save', [FoodController::class, 'save'])->name('foods.save');
 
 Route::resource('foods', FoodController::class);
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
