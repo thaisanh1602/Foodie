@@ -25,6 +25,11 @@
                         width="45"
                         alt="Foodie" />
                 </a>
+
+                <div class="nav-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Tìm kiếm bạn bè">
+                </div>
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     @if(!Auth::check() || (Auth::check() && Auth::user()->typeUser == 'user'))
