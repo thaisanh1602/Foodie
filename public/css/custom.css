@@ -1,0 +1,260 @@
+.post {
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.post .body {
+    display: flex;
+    gap: 10px;
+}
+
+.post .left {
+    width: 790px;
+}
+
+.post .left .title {
+    width: 790px;
+    height: 100px;
+}
+
+.post .box {
+    background-color: #EFE9E9;
+    margin-bottom: 32px;
+}
+
+.post .left .title input[type='text'] {
+    padding: 5px 20px;
+    border-radius: 5px;
+    width: 764px;
+    height: 35px;
+}
+
+.post .left h6 {
+    margin-bottom: 21px;
+}
+
+.post .left .difficulty .options {
+    display: flex;
+    justify-items: center;
+    gap: 10px;
+    padding: 5px;
+}
+
+.post .left .difficulty .option {
+    width: 299px;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 0 10px;
+    display: flex;
+    justify-items: center;
+}
+
+.post .left .privacy .option {
+    width: 722px;
+    height: 59px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.post .right {
+    width: 563px;
+    height: 496px;
+}
+
+.post .right .preview-post .box {
+    margin-bottom: 7px;
+}
+
+.post .right .preview-post .header {
+    display: flex;
+    gap: 10px;
+}
+
+.post .right .preview-post .header img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+}
+
+.post .right .preview-post .body {
+    width: 563px;
+    height: 400px;
+}
+
+.post .right .preview-post .interaction {
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+}
+
+.post .right .preview-post .interaction .detail {
+    margin-top: 7px;
+}
+
+.post .bottom {
+    width: 100%;
+    height: 60px;
+    border-radius: 7px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 70px;
+    padding-right: 70px;
+    background-color: #EFE9E9;
+}
+
+.post .bottom .box {
+    height: 40px;
+    padding: 5px;
+    font-size: 15px;
+    border: #000 solid 1px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* COMMUNITY  */
+
+.community {
+    padding: 0 50px;
+    background-color: white;
+}
+
+.community .header {
+    width: 100%;
+    height: 40px;
+    background-color: #EFE9E9;
+    margin-bottom: 10px;
+}
+
+.community .body .header {
+    display: flex;
+    gap: 10px;
+    height: 50px;
+}
+
+.community .body {
+    display: flex;
+    gap: 10px;
+}
+
+.community .body .left {
+    width: 763px;
+    height: 600px;
+    border-radius: 10px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.community .body .left::-webkit-scrollbar {
+    width: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.community .body .left::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+.community .body .left:active::-webkit-scrollbar,
+.community .body .left:focus::-webkit-scrollbar,
+.community .body .left:hover::-webkit-scrollbar {
+    width: 6px;
+    opacity: 1;
+}
+
+.community .body .left .box {
+    margin: 0;
+}
+
+.community .left .post {
+    margin-bottom: 10px;
+}
+
+.community .left .post .header {
+    display: flex;
+    gap: 10px;
+}
+
+.community .left .post .header h5 {
+    margin-bottom: 0px;
+}
+
+.community .body .left .post .header img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.community .left .post .body {
+    width: 763px;
+    height: 400px;
+}
+
+.community .left .post .interaction {
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+}
+
+.community .left .post .interaction .detail {
+    margin-top: 7px;
+}
+
+/* right  */
+.community .body .right {
+    width: 660px;
+    background-color: #EFE9E9;
+    padding: 0 10px;
+}
+
+.community .body .right h3 {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.community .body .right .leaderboard ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.community .body .right .leaderboard ul li {
+    display: flex;
+    justify-content: space-around;
+    justify-items: center;
+    height: 40px;
+    margin-bottom: 10px;
+    border: #000 1px solid;
+    padding-left: 10px;
+    border-radius: 7px;
+}
+
+.community .body .right .leaderboard img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.community .body .right .leaderboard ul li .first {
+    border-right: black solid 1px;
+    width: 60px;
+}
+
+.community .body .right .leaderboard ul li .middle {
+    border-right: black solid 1px;
+    width: 600px;
+    padding-left: 10px;
+}
+
+.community .body .right .leaderboard ul li .third {
+    width: 100px;
+    padding-left: 5px;
+}
