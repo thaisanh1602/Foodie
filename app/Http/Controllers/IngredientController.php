@@ -45,14 +45,13 @@ class IngredientController extends Controller
 
         $imagePath = 'images/' . $fileName;   // Lưu đường dẫn vào DB
     }
-
     DB::table('ingredients')->insert([
         'name' => $request->name,
         'image' => $imagePath,
         'description' => $request->description
     ]);
 
-    return redirect()->back()->with('success', 'Thêm nguyên liệu thành công!');
+       return redirect()->route('suggestion')->with('success', 'Thêm nguyên liệu thành công!');
     }
 
     /**

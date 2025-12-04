@@ -25,6 +25,30 @@
       padding: 2rem 0;
       background: #f8f9fa
     }
+
+    .card-container {
+    border: 2px solid #ddd; 
+    border-radius: 15px;    
+    padding: 15px;          
+    background-color: #f8f9fa; 
+}
+
+    .selectable-card {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: 0.2s;
+}
+
+.selectable-card.selected {
+    border-color: #28a745 !important;
+    background-color: #e9fbe9 !important;
+}
+
+.selectable-card input[type="checkbox"] {
+    display: none;
+}
   </style>
 </head>
 
@@ -86,8 +110,13 @@
 
   <!-- Them sua xoa mon an -->
   <section class="container my-5">
-    <h2>Danh sách nguyên liệu</h2>
-    <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addIngredientModal">Thêm mới</a>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="m-0">Danh sách nguyên liệu</h2>
+
+    <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addIngredientModal">
+        Thêm mới
+    </a>
+</div>
 
     <!-- Modal Thêm Nguyên Liệu -->
     <div class="modal fade" id="addIngredientModal" tabindex="-1" aria-hidden="true">
@@ -135,27 +164,72 @@
     </div>
 
 
-    <h3>Món gợi ý cho bạn</h3>
-    <div class="row g-4">
-      <!-- Card -->
+    <!--Xu ly goi nguyen lieu-->
+<form action="{{ route('foods.suggest') }}" method="POST">
+    @csrf
+    <div class="card-container row g-4">
       @foreach($ingredients as $ingredient)
-      <div class="col-md-3">
-        <div class="card food-card">
-          <img src="{{ asset($ingredient->image) }} " class="card-img-top img-fluid" alt="Món ăn" style="width:auto; height:160px; object-fit:cover;">
+      <div class="col-md-2 mb-2">
+        <div class="card selectable-card" id="card-{{ $ingredient->ingredientID }}">
+          <input type="checkbox" name="ingredients[]" value="{{ $ingredient->ingredientID }}">
+
+          <img src="{{ asset($ingredient->image) }}"
+            class="card-img-top img-fluid"
+            alt="Món ăn"
+            style="width:auto; height:160px; object-fit:cover;">
+
           <div class="card-body">
             <h5 class="card-title">{{ $ingredient->name }}</h5>
             <p class="card-text">{{ $ingredient->description }}</p>
+
             <a href="#" class="btn btn-success w-100">Xem công thức</a>
-            <a class="btn btn-warning mt-2 w-100 text-white" data-bs-toggle="modal" data-bs-target="#editIngredientModal{{ $ingredient->ingredientID }}">Sửa</a>
-            <form action="{{ route('ingredients.destroy', $ingredient->ingredientID) }}" method="POST">
+            <a class="btn btn-warning mt-2 w-100 text-white"
+              data-bs-toggle="modal"
+              data-bs-target="#editIngredientModal{{ $ingredient->ingredientID }}">Sửa</a>
+
+            <form action="{{ route('ingredients.destroy', $ingredient->ingredientID) }}"
+              method="POST">
               @csrf @method('DELETE')
               <button class="btn btn-danger mt-2 w-100" type="submit">Xóa</button>
             </form>
           </div>
-        </div>
       </div>
+</div>
       @endforeach
+    
+      <button type="submit" class="btn btn-primary mt-3">Gợi ý món ăn</button>
+      </div>
+</form>
+@if(isset($meals) && count($meals) > 0)
+<h3 class="mt-5">
+    Món ăn gợi ý 
+    <span class="badge bg-success">
+        {{ count($meals) }} món (khớp {{ collect($meals)->avg('match_count') >= 1 ? round(collect($meals)->avg('match_count'), 1) : 1 }} nguyên liệu trung bình)
+    </span>
+</h3>
+<div class="row g-4">
+    @foreach($meals as $meal)
+    <div class="col-md-4 col-lg-3">
+        <div class="card h-100 shadow-sm">
+            <img src="{{ $meal['strMealThumb'] }}" class="card-img-top" style="height:180px; object-fit:cover;">
+            <div class="card-body d-flex flex-column">
+                <h6 class="card-title">{{ Str::limit($meal['strMeal'], 50) }}</h6>
+                <small class="text-success mb-2">
+                    Khớp {{ $meal['match_count'] }} nguyên liệu
+                </small>
+                <form action="{{ route('foods.save') }}" method="POST" class="mt-auto">
+                    @csrf
+                    <input type="hidden" name="name" value="{{ $meal['strMeal'] }}">
+                    <input type="hidden" name="image" value="{{ $meal['strMealThumb'] }}">
+                    <button type="submit" class="btn btn-success btn-sm w-100">Lưu món ăn</button>
+                </form>
+            </div>
+        </div>
     </div>
+    @endforeach
+</div>
+@endif
+
   </section>
 
 
@@ -210,173 +284,38 @@
       </div>
     </div>
   </div>
-
   @endforeach
+  
+  <!--Footer-->
+  <div>
+    @include('layouts.footer')
+  </div>
 
+  <script>
+document.querySelectorAll('.selectable-card').forEach(card => {
+    card.addEventListener('click', (e) => {
 
+        // Khi nhấn vào checkbox thì không trigger lên card
+        if (e.target.type === "checkbox") {
+            e.stopPropagation();
+            return;
+        }
 
-  <!-- Food Suggestions Section -->
-  <section class="container my-5">
-    <h3>Món gợi ý cho bạn</h3>
-    <div class="row g-4">
-      <!-- Card 1 -->
-      <div class="col-md-4">
-        <div class="card food-card">
-          <img src="https://source.unsplash.com/400x300/?pasta" class="card-img-top" alt="Món ăn">
-          <div class="card-body">
-            <h5 class="card-title">Mỳ Ý sốt bò bằm</h5>
-            <p class="card-text">⏱ 30 phút | 🟢 Dễ</p>
-            <a href="#" class="btn btn-success w-100">Xem công thức</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card 2 -->
-      <div class="col-md-4">
-        <div class="card food-card">
-          <img src="https://source.unsplash.com/400x300/?salad" class="card-img-top" alt="Món ăn">
-          <div class="card-body">
-            <h5 class="card-title">Salad rau củ tươi</h5>
-            <p class="card-text">⏱ 15 phút | 🟢 Rất dễ</p>
-            <a href="#" class="btn btn-success w-100">Xem công thức</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="col-md-4">
-        <div class="card food-card">
-          <img src="https://source.unsplash.com/400x300/?dessert" class="card-img-top" alt="Món ăn">
-          <div class="card-body">
-            <h5 class="card-title">Bánh flan caramen</h5>
-            <p class="card-text">⏱ 40 phút | 🟡 Trung bình</p>
-            <a href="#" class="btn btn-success w-100">Xem công thức</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        // Không đổi màu khi bấm vào các nút khác
+        if (e.target.tagName === "A" || e.target.tagName === "BUTTON" || e.target.closest("form button")) {
+            return;
+        }
 
-  <!-- Footer -->
-  <footer class="text-center text-lg-start bg-body-tertiary text-muted">
-    <!-- Section: Social media -->
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-      <!-- Left -->
-      <div class="me-5 d-none d-lg-block">
-        <span>Get connected with us on social networks:</span>
-      </div>
-      <!-- Left -->
+        // Toggle màu card
+        card.classList.toggle('selected');
 
-      <!-- Right -->
-      <div>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-google"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="" class="me-4 text-reset">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-      <!-- Right -->
-    </section>
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
-    <section class="">
-      <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
-        <div class="row mt-3">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              <i class="fas fa-gem me-3"></i>Foodie
-            </h6>
-            <p>
-              Không còn đau đầu với câu hỏi 'Hôm nay ăn gì?' nữa! — Website của chúng tôi là nguồn cảm hứng bất tận, mang đến những gợi ý món ăn hoàn hảo, phù hợp khẩu vị và quỹ thời gian bận rộn của gia đình bạn.
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              Products
-            </h6>
-            <p>
-              <a href="#!" class="text-reset">Angular</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">React</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Vue</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Laravel</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              Useful links
-            </h6>
-            <p>
-              <a href="#!" class="text-reset">Pricing</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Settings</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Orders</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Help</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">Liên hệ</h6>
-            <p><i class="fas fa-home me-3"></i> Ngũ Hành Sơn, Đà Nẵng</p>
-            <p>
-              <i class="fas fa-envelope me-3"></i>
-              info@example.com
-            </p>
-            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-          </div>
-          <!-- Grid column -->
-        </div>
-        <!-- Grid row -->
-      </div>
-    </section>
-    <!-- Section: Links  -->
-
-    <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-      © Thực hiện bởi nhóm sinh viên trường Công nghệ Thông tin và Truyền thông Việt Hàn - VKU
-    </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
-
+        let checkbox = card.querySelector('input[type="checkbox"]');
+        checkbox.checked = !checkbox.checked;
+    });
+});
+</script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
 </body>
 
 </html>
