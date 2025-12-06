@@ -165,13 +165,11 @@
 
 
     <!--Xu ly goi nguyen lieu-->
-<form action="{{ route('foods.suggest') }}" method="POST">
-    @csrf
     <div class="card-container row g-4">
       @foreach($ingredients as $ingredient)
       <div class="col-md-2 mb-2">
         <div class="card selectable-card" id="card-{{ $ingredient->ingredientID }}">
-          <input type="checkbox" name="ingredients[]" value="{{ $ingredient->ingredientID }}">
+          <input type="checkbox" name="ingredients[]" value="{{ $ingredient->name }}">
 
           <img src="{{ asset($ingredient->image) }}"
             class="card-img-top img-fluid"
@@ -182,7 +180,6 @@
             <h5 class="card-title">{{ $ingredient->name }}</h5>
             <p class="card-text">{{ $ingredient->description }}</p>
 
-            <a href="#" class="btn btn-success w-100">Xem công thức</a>
             <a class="btn btn-warning mt-2 w-100 text-white"
               data-bs-toggle="modal"
               data-bs-target="#editIngredientModal{{ $ingredient->ingredientID }}">Sửa</a>
@@ -196,40 +193,7 @@
       </div>
 </div>
       @endforeach
-    
-      <button type="submit" class="btn btn-primary mt-3">Gợi ý món ăn</button>
       </div>
-</form>
-@if(isset($meals) && count($meals) > 0)
-<h3 class="mt-5">
-    Món ăn gợi ý 
-    <span class="badge bg-success">
-        {{ count($meals) }} món (khớp {{ collect($meals)->avg('match_count') >= 1 ? round(collect($meals)->avg('match_count'), 1) : 1 }} nguyên liệu trung bình)
-    </span>
-</h3>
-<div class="row g-4">
-    @foreach($meals as $meal)
-    <div class="col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-            <img src="{{ $meal['strMealThumb'] }}" class="card-img-top" style="height:180px; object-fit:cover;">
-            <div class="card-body d-flex flex-column">
-                <h6 class="card-title">{{ Str::limit($meal['strMeal'], 50) }}</h6>
-                <small class="text-success mb-2">
-                    Khớp {{ $meal['match_count'] }} nguyên liệu
-                </small>
-                <form action="{{ route('foods.save') }}" method="POST" class="mt-auto">
-                    @csrf
-                    <input type="hidden" name="name" value="{{ $meal['strMeal'] }}">
-                    <input type="hidden" name="image" value="{{ $meal['strMealThumb'] }}">
-                    <button type="submit" class="btn btn-success btn-sm w-100">Lưu món ăn</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    @endforeach
-</div>
-@endif
-
   </section>
 
 
@@ -285,6 +249,10 @@
     </div>
   </div>
   @endforeach
+
+  <section>
+    @include('goiy')
+  </section>
   
   <!--Footer-->
   <div>

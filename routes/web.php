@@ -19,16 +19,20 @@ Route::get('/suggestion', [SuggestionController::class, 'index'])->name('suggest
 Route::get('/community', [CommunityController::class, 'index'])->name('community');
 
 Route::resource('ingredients', IngredientController::class);
-Route::resource('foods', FoodController::class);
+// Route::resource('foods', FoodController::class);
 
 
 Auth::routes();
 Route::get('/post', [PostController::class, 'index'])->name('post');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Luu mon an
-Route::post('/foods/suggest', [FoodController::class, 'suggestByIngredients'])->name('foods.suggest');
-Route::post('/foods/save', [FoodController::class, 'save'])->name('foods.save');
+//Lưu món ăn
+// Danh sách nguyên liệu & form
+Route::get('/foods/suggest', [FoodController::class, 'index'])->name('foods.index');
 
-Route::resource('foods', FoodController::class);
+// Gửi nguyên liệu để gợi ý món ăn
+Route::post('/foods/suggest', [FoodController::class, 'suggestByIngredients'])->name('foods.suggest');
+
+
+//Profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
