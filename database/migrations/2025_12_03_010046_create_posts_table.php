@@ -14,17 +14,17 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('postID');
+            $table->integer('userID')->unsigned();
+            $table->string('userName');
             $table->string('title');
+            $table->string('image')->nullable();
             $table->text('content')->nullable();
-            $table->integer('userID')->unsigned()->nullable();
-            $table->integer('foodID')->unsigned()->nullable();
+            $table->string('level');
+            $table->string('privacy');
             $table->dateTime('createdAt')->default(DB::raw('CURRENT_TIMESTAMP'));
-
             $table->foreign('userID')
                 ->references('id')->on('users');
-
-            $table->foreign('foodID')
-                ->references('foodID')->on('foods');
+            $table->timestamps();
         });
     }
 

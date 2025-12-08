@@ -26,10 +26,10 @@
                         alt="Foodie" />
                 </a>
 
-                <div class="nav-search">
+                <form action="{{ route('user.search') }}" method="GET" class="nav-search">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Tìm kiếm bạn bè">
-                </div>
+                    <input type="text" name="query" placeholder="Tìm kiếm bạn bè" value="{{ request('query') }}">
+                </form>
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     @if(!Auth::check() || (Auth::check() && Auth::user()->typeUser == 'user'))
