@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\ProfileController;
@@ -36,3 +37,19 @@ Route::post('/foods/suggest', [FoodController::class, 'suggestByIngredients'])->
 
 //Profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
+Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
+
+Route::post('/community/{post}/like', [CommunityController::class, 'like'])->name('community.like');
+
+Route::post('/community/comment/{postID}', [CommunityController::class, 'comment'])
+    ->name('community.comment');
+
+Route::get('/post/{id}', [PostController::class, 'show'])->name('show');
+
+Route::post('/community/share/{postID}', [CommunityController::class, 'share'])
+    ->name('community.share');
+
+Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
+
+Route::get('/search-users', [UserController::class, 'search'])->name('user.search');

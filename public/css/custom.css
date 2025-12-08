@@ -98,10 +98,6 @@
     background-size: cover;
 }
 
-.post .right .preview-post .body {
-    width: 563px;
-    height: 400px;
-}
 
 .post .right .preview-post .interaction {
     height: 40px;
@@ -123,6 +119,12 @@
     gap: 70px;
     padding-right: 70px;
     background-color: #EFE9E9;
+}
+
+.image-upload {
+    background-color: #EFE9E9;
+    height: 40px;
+    margin-bottom: 20px;
 }
 
 .post .bottom .box {
@@ -209,9 +211,9 @@
     object-fit: cover;
 }
 
-.community .left .post .body {
-    width: 763px;
-    height: 400px;
+.community .left .post .community-body {
+    min-width: 763px;
+    min-height: 400px;
 }
 
 .community .left .post .interaction {
@@ -333,9 +335,9 @@
     object-fit: cover;
 }
 
-.profile .left .post .body {
-    width: 821px;
-    height: 400px;
+.profile .left .post .profile-body {
+    min-width: 821px;
+    min-height: 400px;
 }
 
 .profile .left .post .interaction {

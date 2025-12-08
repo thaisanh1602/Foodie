@@ -1,37 +1,53 @@
 @include('layouts.main')
+
 @section('content')
 <div class="profile">
-    <div class="header">
-        <img src="{{asset('images\Fruits.png')}}" alt="">
-        <h5>{{$posts[0]->userName}}</h5>
+
+    {{-- HEADER PROFILE --}}
+    <div class="header" style="display:flex; align-items:center; gap:15px; margin-bottom:20px;">
+        <img src="{{ asset($user->avatar ?? 'images/Fruits.png') }}"
+            alt=""
+            style="width:80px; height:80px; border-radius:50%; object-fit:cover;">
+
+        <div>
+            <h3>{{ $user->name }}</h3>
+            <p>Email: {{ $user->email }}</p>
+            <p>Tổng bài viết: {{ $posts->count() }}</p>
+        </div>
     </div>
+
+
     <div class="body">
         <div class="left">
+
             @foreach($posts as $post)
             <div class="post">
 
-                <!-- Header -->
+                <!-- Header post -->
                 <div class="header box">
                     <a href="{{ route('profile.show', $post->userID) }}">
-                        <img src="{{ asset('images/Fruits.png') }}" alt="" style="cursor:pointer;">
+                        <img src="{{ asset('images/Fruits.png') }}"
+                            alt=""
+                            style="cursor:pointer; width:50px; border-radius:50%;">
                     </a>
+
                     <div>
                         <h5>{{ $post->userName }}</h5>
                         <h6>{{ $post->created_at->format('d/m/Y H:i') }}</h6>
                     </div>
                 </div>
 
-                <!-- Body -->
-                <div class="profile-body box">
+                <!-- Body post -->
+                <div class="community-body box">
                     <h6 style="font-weight: bold;">Tiêu đề: {{ $post->title }}</h6>
                     <p style="font-weight: bold;">Độ khó: {{ $post->level }}</p>
 
-                    <div>{{!! $post->content }}</div>
+                    <p>{{ $post->content }}</p>
 
                     @if ($post->image)
                     <img src="{{ asset($post->image) }}"
                         alt=""
-                        style="display: block; margin: 0 auto; width: 40%; height: auto;">
+                        style="max-width:150px; margin-top:10px;">
                     @endif
                 </div>
 
@@ -58,52 +74,40 @@
                         <i class="fa-solid fa-message"></i>
                         <span>
                             {{ $post->comments->count() }}
-                            <a style="all:unset; cursor:pointer;" href="{{ route('show', $post->postID) }}">Bình luận</a>
+                            <a href="{{ route('show', $post->postID) }}">Bình luận</a>
                         </span>
                     </div>
 
                     {{-- SHARE --}}
                     <div class="detail">
-                        @if ($post->isSharedByUser())
-                        <form action="{{ route('community.share', $post->postID) }}" method="post">
+                        <form action="{{ route('community.share', $post->postID) }}" method="POST">
                             @csrf
-                            <button type="submit" style="all:unset; cursor:pointer; ">
-                                <i class="fa-solid fa-share"></i> Đã chia sẻ ({{ $post->shares->count() }})
+                            <button type="submit" style="all:unset; cursor:pointer;">
+                                @if ($post->isSharedByUser())
+                                <i class="fa-solid fa-share"></i> Đã chia sẻ
+                                @else
+                                <i class="fa-regular fa-share"></i> Chia sẻ
+                                @endif
+                                ({{ $post->shares->count() }})
                             </button>
                         </form>
-                        @else
-                        <form action="{{ route('community.share', $post->postID) }}" method="post"
-                            onsubmit=" return confirm('Bạn có chắc chắn muốn chia sẻ bài viết này không?');">
-                            @csrf
-                            <button type="submit" style="all:unset; cursor:pointer; ">
-                                <i class="fa-solid fa-share"></i> Chia sẻ ({{ $post->shares->count() }})
-                            </button>
-                        </form>
-                        @endif
                     </div>
 
                 </div>
 
                 <!-- Comment form -->
-                <div class="card my-3 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Thêm bình luận</h5>
-                        <form action="{{ route('community.comment', $post->postID) }}" method="POST">
-                            @csrf
-                            <div class="mb-3">
-                                <textarea name="content" class="form-control" rows="3" placeholder="Viết bình luận..." required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">
-                                Gửi bình luận
-                            </button>
-                        </form>
-                    </div>
-                </div>
+                <form action="{{ route('community.comment', $post->postID) }}" method="POST">
+                    @csrf
+                    <textarea name="content" placeholder="Viết bình luận..." required
+                        style="width:100%; height:60px;"></textarea>
+                    <button type="submit" style="padding:5px 10px; border:1px solid #ccc;">Gửi</button>
+                </form>
 
             </div>
             @endforeach
 
-
-
         </div>
     </div>
+
+</div>
+@endsection
