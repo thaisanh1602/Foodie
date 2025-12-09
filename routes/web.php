@@ -57,3 +57,8 @@ Route::get('/search-users', [UserController::class, 'search'])->name('user.searc
 
 Route::get('/statistic', [AdminStatisticController::class, 'index'])->name('statistic');
 
+//Quan ly danh muc category
+use App\Http\Controllers\CategoryController;
+// Route này sẽ tạo đủ các link: index, create, store, edit, update, destroy
+Route::resource('categories', CategoryController::class);
+
