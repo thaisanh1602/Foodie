@@ -2,18 +2,16 @@
 @section('content')
 <div class="profile">
     <div class="header">
-        <<<<<<< HEAD
-            <form action="{{ route('profile.updateAvatar') }}" id="avatarForm" method="post" enctype="multipart/form-data">
+
+        <form action="{{ route('profile.updateAvatar') }}" id="avatarForm" method="post" enctype="multipart/form-data">
             @csrf
             <img id="avatarPreview"
                 src="{{$user->image ? asset($user->image) : asset('images/1764752568_fruits.png')}}" alt=""
                 style="width:50px; height:50px; cursor:pointer; border-radius:50%; object-fit:cover">
             <input type="file" style="display:none" id="avatarInput" name="avatar" accept="image/*">
-            </form>
-            =======
-            <img src="{{asset('images\Fruits.png')}}" alt="">
-            >>>>>>> 029956dc30b3d3edef66c896cd102938725e0b3a
-            <h5>{{$posts[0]->userName}}</h5>
+        </form>
+
+        <h5>{{$posts[0]->userName}}</h5>
     </div>
     <div class="body">
         <div class="left">

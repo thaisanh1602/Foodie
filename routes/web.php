@@ -55,14 +55,12 @@ Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.s
 
 Route::get('/search-users', [UserController::class, 'search'])->name('user.search');
 
-<<<<<<< HEAD
+
 Route::post('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.updateAvatar');
-=======
+
 Route::get('/statistic', [AdminStatisticController::class, 'index'])->name('statistic');
 
 //Quan ly danh muc category
 use App\Http\Controllers\CategoryController;
 // Route này sẽ tạo đủ các link: index, create, store, edit, update, destroy
 Route::resource('categories', CategoryController::class);
-
->>>>>>> 029956dc30b3d3edef66c896cd102938725e0b3a

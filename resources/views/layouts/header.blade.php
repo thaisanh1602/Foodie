@@ -1,4 +1,8 @@
 <!-- Navbar -->
+<!-- font-awsome  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{asset('css\custom.css')}}">
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <!-- Container wrapper -->
@@ -113,7 +117,7 @@ document.getElementById('logout-form').submit();">
                 @if( (Auth::check() && Auth::user()->typeUser == 'user'))
                 <a data-mdb-dropdown-init class="nav-link d-flex align-items-center"
                     id="navbarDropdownMenuLink" role="button" aria-expanded="false" href="{{route('profile')}}">
-                    <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" class="rounded-circle" height="37" alt="Avatar"
+                    <img src="{{asset($user->image)}}" class="rounded-circle" height="37" width="37" alt="Avatar"
                         loading="lazy" />
                 </a>
                 @endif
