@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class SuggestionController extends Controller
 {
@@ -13,16 +15,17 @@ class SuggestionController extends Controller
     public function index()
     {
         $ingredients = DB::table('ingredients')
-        ->leftJoin('categories', 'ingredients.category_id', '=', 'categories.categoryID')
-        ->select('ingredients.*', 'categories.name as category_name')
-        ->get();
+            ->leftJoin('categories', 'ingredients.category_id', '=', 'categories.categoryID')
+            ->select('ingredients.*', 'categories.name as category_name')
+            ->get();
 
-    // 2. Lấy danh sách danh mục (ĐÂY LÀ DÒNG BẠN ĐANG THIẾU)
-    // Biến này để hiển thị trong <select> modal
-    $categories = DB::table('categories')->get();
+        // 2. Lấy danh sách danh mục (ĐÂY LÀ DÒNG BẠN ĐANG THIẾU)
+        // Biến này để hiển thị trong <select> modal
+        $categories = DB::table('categories')->get();
 
-    // 3. Truyền cả 2 biến sang view
-    return view('suggestion', compact('ingredients', 'categories'));
+        // 3. Truyền cả 2 biến sang view
+        $user = User::where('id', Auth::id())->get()->first();
+        return view('suggestion', compact('ingredients', 'categories', 'user'));
     }
 
     /**

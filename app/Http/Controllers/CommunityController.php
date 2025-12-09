@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Like;
 use App\Models\Comment;
 use App\Models\Share;
+use App\Models\User;
 
 class CommunityController extends Controller
 {
@@ -31,7 +32,9 @@ class CommunityController extends Controller
             ->limit(10)
             ->get();
 
-        return view('community', compact('posts', 'topUsers'));
+
+        $user = User::where('id', Auth::id())->get()->first();
+        return view('community', compact('posts', 'topUsers', 'user'));
     }
 
     public function like($postID)
