@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminStatisticController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StatisticController;
@@ -53,3 +54,6 @@ Route::post('/community/share/{postID}', [CommunityController::class, 'share'])
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
 
 Route::get('/search-users', [UserController::class, 'search'])->name('user.search');
+
+Route::get('/statistic', [AdminStatisticController::class, 'index'])->name('statistic');
+

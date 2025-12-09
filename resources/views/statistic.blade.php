@@ -2,191 +2,182 @@
 <html lang="vi">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Thống kê</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thống kê</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+    }
 
-        .hero {
-            min-height: 60vh;
-            display: flex;
-            align-items: center
-        }
+    .hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center
+    }
 
-        .brand {
-            font-weight: 700
-        }
+    .brand {
+      font-weight: 700
+    }
 
-        footer {
-            padding: 2rem 0;
-            background: #f8f9fa
-        }
-    </style>
+    footer {
+      padding: 2rem 0;
+      background: #f8f9fa
+    }
+
+    .card-container {
+    border: 2px solid #ddd; 
+    border-radius: 15px;    
+    padding: 15px;          
+    background-color: #f8f9fa; 
+}
+
+    .selectable-card {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: 0.2s;
+}
+
+.selectable-card.selected {
+    border-color: #28a745 !important;
+    background-color: #e9fbe9 !important;
+}
+
+.selectable-card input[type="checkbox"] {
+    display: none;
+}
+  </style>
 </head>
 
 <body>
 
-    <!--Header-->
-    <div>
-        @include('layouts.header')
-    </div>
+  <!--Header-->
+  <div>
+    @include('layouts.header')
+  </div>
 
-    <div class="container my-5">
-        <h2 class="mb-4 text-center">Thống kê gợi ý món ăn</h2>
+<div class="container">
+    <h1 class="mb-4">📊 Thống kê hệ thống</h1>
 
-        <div class="row">
-            <!-- Biểu đồ số lượng món theo loại -->
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm">
-                    <div class="card-header text-center">
-                        Số lượng món theo loại
-                    </div>
-                    <div class="card-body">
-                        <canvas id="chartCategory"></canvas>
-                    </div>
-                </div>
+    <div class="row">
+        <!-- Card tổng quan -->
+        <div class="col-md-4 mb-3">
+            <div class="card p-3 text-center">
+                <h4>Người dùng</h4>
+                <h2>{{ $totalUsers }}</h2>
             </div>
+        </div>
 
-            <!-- Biểu đồ số lượt gợi ý theo món -->
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm">
-                    <div class="card-header text-center">
-                        Số lượt gợi ý theo món
-                    </div>
-                    <div class="card-body">
-                        <canvas id="chartSuggestions"></canvas>
-                    </div>
-                </div>
+        <div class="col-md-4 mb-3">
+            <div class="card p-3 text-center">
+                <h4>Món ăn</h4>
+                <h2>{{ $totalFoods }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card p-3 text-center">
+                <h4>Bài viết</h4>
+                <h2>{{ $totalPosts }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card p-3 text-center">
+                <h4>Bình luận</h4>
+                <h2>{{ $totalComments }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card p-3 text-center">
+                <h4>Lượt Like</h4>
+                <h2>{{ $totalLikes }}</h2>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card p-3 text-center">
+                <h4>Lượt Share</h4>
+                <h2>{{ $totalShares }}</h2>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="text-center text-lg-start bg-body-tertiary text-muted">
-        <!-- Section: Social media -->
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-            <!-- Left -->
-            <div class="me-5 d-none d-lg-block">
-                <span>Get connected with us on social networks:</span>
-            </div>
-            <!-- Left -->
+    <hr>
 
-            <!-- Right -->
-            <div>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-google"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <!-- Right -->
-        </section>
-        <!-- Section: Social media -->
+    <!-- Top bài viết được like nhiều nhất -->
+    <h3 class="mt-4">🔥 Top 5 bài viết nhiều Like</h3>
+    <table class="table table-bordered mt-2">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tiêu đề</th>
+                <th>Số Like</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($topLikedPosts as $p)
+            <tr>
+                <td>{{ $p->postID }}</td>
+                <td>{{ $p->title }}</td>
+                <td>{{ $p->likeCount }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 
-        <!-- Section: Links  -->
-        <section class="">
-            <div class="container text-center text-md-start mt-5">
-                <!-- Grid row -->
-                <div class="row mt-3">
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                        <!-- Content -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            <i class="fas fa-gem me-3"></i>Foodie
-                        </h6>
-                        <p>
-                            Không còn đau đầu với câu hỏi 'Hôm nay ăn gì?' nữa! — Website của chúng tôi là nguồn cảm hứng bất tận, mang đến những gợi ý món ăn hoàn hảo, phù hợp khẩu vị và quỹ thời gian bận rộn của gia đình bạn.
-                        </p>
-                    </div>
-                    <!-- Grid column -->
+    <!-- Top bài viết được share nhiều nhất -->
+    <h3 class="mt-4">📣 Top 5 bài viết nhiều Share</h3>
+    <table class="table table-bordered mt-2">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tiêu đề</th>
+                <th>Số Share</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($topSharedPosts as $p)
+            <tr>
+                <td>{{ $p->postID }}</td>
+                <td>{{ $p->title }}</td>
+                <td>{{ $p->shareCount }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 
-                    <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Products
-                        </h6>
-                        <p>
-                            <a href="#!" class="text-reset">Angular</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">React</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Vue</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Laravel</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
+    <!-- Món ăn theo category -->
+    <h3 class="mt-4">🍽 Số lượng món ăn theo Category</h3>
+    <table class="table table-bordered mt-2">
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Số món</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($foodsByCategory as $c)
+            <tr>
+                <td>{{ $c->name }}</td>
+                <td>{{ $c->foodCount }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Useful links
-                        </h6>
-                        <p>
-                            <a href="#!" class="text-reset">Pricing</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Settings</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Orders</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Help</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
+</div>
 
-                    <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">Liên hệ</h6>
-                        <p><i class="fas fa-home me-3"></i> Ngũ Hành Sơn, Đà Nẵng</p>
-                        <p>
-                            <i class="fas fa-envelope me-3"></i>
-                            info@example.com
-                        </p>
-                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-                    </div>
-                    <!-- Grid column -->
-                </div>
-                <!-- Grid row -->
-            </div>
-        </section>
-        <!-- Section: Links  -->
-
-        <!-- Copyright -->
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-            © Thực hiện bởi nhóm sinh viên trường Công nghệ Thông tin và Truyền thông Việt Hàn - VKU
-        </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!--Footer-->
+  <div>
+    @include('layouts.footer')
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
 </body>
 
 </html>
