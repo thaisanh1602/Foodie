@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class FoodController extends Controller
 {
@@ -21,7 +23,9 @@ class FoodController extends Controller
             ]);
         }
 
-        return view('goiy', compact('ingredients'));
+        $user = User::where('id', Auth::id())->get()->first();
+        // Trả về view quản lý danh mục (bạn cần tạo file view này)
+        return view('goiy', compact('ingredients', 'user'));
     }
 
     // Gợi ý món ăn từ nguyên liệu
@@ -84,7 +88,9 @@ class FoodController extends Controller
                 $finalMeals[] = $meal;
             }
         }
-
-        return view('result', ['meals' => $finalMeals]);
+        $user = User::where('id', Auth::id())->get()->first();
+        // Trả về view quản lý danh mục (bạn cần tạo file view này)
+        return view('result',['meals' => $finalMeals], compact('user'));
+        // return view('', ['meals' => $finalMeals]);
     }
 }
