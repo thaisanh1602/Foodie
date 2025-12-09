@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; // Nhớ dòng này để dùng DB::table
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -14,9 +16,9 @@ class CategoryController extends Controller
     {
         // Lấy tất cả danh mục từ bảng categories
         $categories = DB::table('categories')->get();
-
+        $user = User::where('id', Auth::id())->get()->first();
         // Trả về view quản lý danh mục (bạn cần tạo file view này)
-        return view('categories', compact('categories'));
+        return view('categories', compact('categories', 'user'));
     }
 
     /**
