@@ -16,7 +16,7 @@
         <!-- header  -->
         <div class="header box">
           <a href="{{ route('profile.show', $post->userID) }}">
-            <img src="{{ asset('images/Fruits.png') }}" alt="" style="cursor:pointer;">
+            <img src="{{ asset($post->user->image) }}" alt="" style="cursor:pointer;">
           </a>
           <div>
             <h5>{{$post->userName}}</h5>

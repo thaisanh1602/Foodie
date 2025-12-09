@@ -2,7 +2,13 @@
 @section('content')
 <div class="profile">
     <div class="header">
-        <img src="{{asset('images\Fruits.png')}}" alt="">
+        <form action="{{ route('profile.updateAvatar') }}" id="avatarForm" method="post" enctype="multipart/form-data">
+            @csrf
+            <img id="avatarPreview"
+                src="{{$user->image ? asset($user->image) : asset('images/1764752568_fruits.png')}}" alt=""
+                style="width:50px; height:50px; cursor:pointer; border-radius:50%; object-fit:cover">
+            <input type="file" style="display:none" id="avatarInput" name="avatar" accept="image/*">
+        </form>
         <h5>{{$posts[0]->userName}}</h5>
     </div>
     <div class="body">
@@ -13,7 +19,7 @@
                 <!-- Header -->
                 <div class="header box">
                     <a href="{{ route('profile.show', $post->userID) }}">
-                        <img src="{{ asset('images/Fruits.png') }}" alt="" style="cursor:pointer;">
+                        <img src="{{ asset($post->user->image) }}" alt="" style="cursor:pointer;">
                     </a>
                     <div>
                         <h5>{{ $post->userName }}</h5>
@@ -107,3 +113,24 @@
 
         </div>
     </div>
+    <script>
+        const avatarForm = document.getElementById('avatarForm');
+        const avatarPreview = document.getElementById('avatarPreview');
+        const avatarInput = document.getElementById('avatarInput');
+
+        avatarPreview.addEventListener('click', function() {
+            avatarInput.click()
+        });
+
+        avatarInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    avatarPreview.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+                avatarForm.submit();
+            }
+        })
+    </script>

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Share;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -17,25 +18,30 @@ class ProfileController extends Controller
     public function index()
     {
 
-        // Bài viết do user đăng
-        $userPosts = Post::where('userID',  Auth::id())->get();
+        $userPosts = Post::where('userID', Auth::id())
+            ->with('user')  // load avatar, name
+            ->get();
 
+        // Bài bạn share
         $sharedPosts = Share::where('userID', Auth::id())
-            ->with('post') // liên kết để lấy post gốc
+            ->with(['post.user']) // load user của chủ bài
             ->get()
             ->map(function ($share) {
-                $share->post->shared_at = $share->created_at;
-                return $share->post;
+                $post = $share->post;
+                $post->shared_at = $share->sharedAt;  // thời gian share
+                return $post;
             });
 
-        // Gộp 2 danh sách và sắp theo ngày mới nhất
+        // Gộp & sort theo ngày mới nhất
         $posts = $userPosts
             ->merge($sharedPosts)
-            ->sortByDesc(function ($post) {
-                return $post->shared_at ?? $post->created_at;
-            });
+            ->sortByDesc(fn($p) => $p->shared_at ?? $p->created_at)
+            ->values(); // reset lại key cho an toàn
 
-        return view('profile', compact('posts'));
+        // thông tin user đang xem profile
+        $user = User::find(Auth::id());
+
+        return view('profile', compact('posts', 'user'));
     }
 
 
@@ -63,6 +69,22 @@ class ProfileController extends Controller
             });
 
         return view('profile', compact('user', 'posts'));
+    }
+
+    public function updateAvatar(Request $request)
+    {
+        $request->validate([
+            'avatar' => 'required|image|max:2048',
+        ]);
+
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+            $path = 'uploads/' . $imageName;
+            User::where('id', Auth::id())->update(['image' => $path]);
+        }
+        return redirect()->back();
     }
 
 

@@ -17,7 +17,10 @@ class CommunityController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::with('user')   // ← Lấy thêm thông tin user + avatar
+            ->orderBy('created_at', 'desc')
+            ->get();
+
         $topUsers = DB::table('posts as p')
             ->leftJoin('post_likes as pl', 'p.postID', '=', 'pl.postID')
             ->select('p.userID', 'p.userName', DB::raw('COUNT(pl.postID) as likes_count'))
@@ -25,6 +28,7 @@ class CommunityController extends Controller
             ->orderByDesc('likes_count')
             ->limit(10)
             ->get();
+
         return view('community', compact('posts', 'topUsers'));
     }
 

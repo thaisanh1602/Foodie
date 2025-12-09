@@ -53,3 +53,5 @@ Route::post('/community/share/{postID}', [CommunityController::class, 'share'])
 Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
 
 Route::get('/search-users', [UserController::class, 'search'])->name('user.search');
+
+Route::post('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.updateAvatar');
