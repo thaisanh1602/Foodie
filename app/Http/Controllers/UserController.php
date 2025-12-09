@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -21,8 +23,10 @@ class UserController extends Controller
 
         $users = User::where('name', 'like', "%{$query}%")
             ->get();
-
-        return view('search', compact('users', 'query'));
+        $user = User::where('id', Auth::id())->get()->first();
+        // Trả về view quản lý danh mục (bạn cần tạo file view này)
+        return view('search', compact('users','user', 'query'));
+        // return view('search', compact('users', 'query'));
     }
 
     /**
