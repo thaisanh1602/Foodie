@@ -15,6 +15,7 @@ class ProfileController extends Controller
      * Display a listing of the resource.
      */
 
+
     public function index()
     {
 
@@ -110,6 +111,7 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      */
+
 
 
     /**
