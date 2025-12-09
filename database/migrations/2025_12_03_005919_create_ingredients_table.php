@@ -16,6 +16,13 @@ return new class extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->text('description')->nullable();
+            $table->unsignedInteger('category_id')->nullable();
+
+        $table->foreign('category_id')
+              ->references('categoryID')->on('categories')
+              ->onDelete('set null'); // Nếu xóa danh mục, nguyên liệu sẽ không bị xóa mà category_id về null
+        
+        $table->timestamps(); // Nên có thêm created_at, updated_at
         });
     }
 
