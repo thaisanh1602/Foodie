@@ -59,119 +59,219 @@
     @include('layouts.header')
   </div>
 
-<div class="container">
-    <h1 class="mb-4">📊 Thống kê hệ thống</h1>
+<div class="container py-5">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-dark mb-1">Dashboard</h2>
+            <p class="text-muted">Tổng quan tình hình hoạt động của hệ thống Foodie.</p>
+        </div>
+        <button class="btn btn-light border shadow-sm"><i class="fas fa-download me-2"></i>Xuất báo cáo</button>
+    </div>
 
-    <div class="row">
-        <!-- Card tổng quan -->
-        <div class="col-md-4 mb-3">
-            <div class="card p-3 text-center">
-                <h4>Người dùng</h4>
-                <h2>{{ $totalUsers }}</h2>
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-4 col-xl-2">
+            <div class="card border-0 shadow-sm h-100 stat-card border-start border-4 border-primary">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="text-muted fw-medium">Người dùng</span>
+                        <div class="icon-box bg-primary-subtle text-primary rounded-circle">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <h3 class="fw-bold mb-0">{{ number_format($totalUsers) }}</h3>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-4 mb-3">
-            <div class="card p-3 text-center">
-                <h4>Món ăn</h4>
-                <h2>{{ $totalFoods }}</h2>
+        <div class="col-md-6 col-lg-4 col-xl-2">
+            <div class="card border-0 shadow-sm h-100 stat-card border-start border-4 border-success">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="text-muted fw-medium">Món ăn</span>
+                        <div class="icon-box bg-success-subtle text-success rounded-circle">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                    </div>
+                    <h3 class="fw-bold mb-0">{{ number_format($totalFoods) }}</h3>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-4 mb-3">
-            <div class="card p-3 text-center">
-                <h4>Bài viết</h4>
-                <h2>{{ $totalPosts }}</h2>
+        <div class="col-md-6 col-lg-4 col-xl-2">
+            <div class="card border-0 shadow-sm h-100 stat-card border-start border-4 border-info">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="text-muted fw-medium">Bài viết</span>
+                        <div class="icon-box bg-info-subtle text-info rounded-circle">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                    </div>
+                    <h3 class="fw-bold mb-0">{{ number_format($totalPosts) }}</h3>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-4 mb-3">
-            <div class="card p-3 text-center">
-                <h4>Bình luận</h4>
-                <h2>{{ $totalComments }}</h2>
+        <div class="col-md-6 col-lg-4 col-xl-2">
+            <div class="card border-0 shadow-sm h-100 stat-card border-start border-4 border-warning">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="text-muted fw-medium">Bình luận</span>
+                        <div class="icon-box bg-warning-subtle text-warning rounded-circle">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                    </div>
+                    <h3 class="fw-bold mb-0">{{ number_format($totalComments) }}</h3>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-4 mb-3">
-            <div class="card p-3 text-center">
-                <h4>Lượt Like</h4>
-                <h2>{{ $totalLikes }}</h2>
+        <div class="col-md-6 col-lg-4 col-xl-2">
+            <div class="card border-0 shadow-sm h-100 stat-card border-start border-4 border-danger">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="text-muted fw-medium">Lượt Thích</span>
+                        <div class="icon-box bg-danger-subtle text-danger rounded-circle">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                    <h3 class="fw-bold mb-0">{{ number_format($totalLikes) }}</h3>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-4 mb-3">
-            <div class="card p-3 text-center">
-                <h4>Lượt Share</h4>
-                <h2>{{ $totalShares }}</h2>
+        <div class="col-md-6 col-lg-4 col-xl-2">
+            <div class="card border-0 shadow-sm h-100 stat-card border-start border-4 border-dark">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <span class="text-muted fw-medium">Chia sẻ</span>
+                        <div class="icon-box bg-dark-subtle text-dark rounded-circle">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                    </div>
+                    <h3 class="fw-bold mb-0">{{ number_format($totalShares) }}</h3>
+                </div>
             </div>
         </div>
     </div>
 
-    <hr>
+    <div class="row g-4 mb-5">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-0 py-3">
+                    <h5 class="fw-bold mb-0 text-danger"><i class="fas fa-fire me-2"></i>Top 5 Bài viết Yêu thích</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="ps-4">#</th>
+                                    <th>Tiêu đề bài viết</th>
+                                    <th class="text-center">Lượt thích</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($topLikedPosts as $index => $p)
+                                <tr>
+                                    <td class="ps-4 fw-bold text-muted">{{ $index + 1 }}</td>
+                                    <td>
+                                        <span class="d-block text-truncate" style="max-width: 250px;">{{ $p->title }}</span>
+                                        <small class="text-muted">ID: #{{ $p->postID }}</small>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill">
+                                            {{ number_format($p->likeCount) }} <i class="fas fa-heart ms-1"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Top bài viết được like nhiều nhất -->
-    <h3 class="mt-4">🔥 Top 5 bài viết nhiều Like</h3>
-    <table class="table table-bordered mt-2">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tiêu đề</th>
-                <th>Số Like</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($topLikedPosts as $p)
-            <tr>
-                <td>{{ $p->postID }}</td>
-                <td>{{ $p->title }}</td>
-                <td>{{ $p->likeCount }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-0 py-3">
+                    <h5 class="fw-bold mb-0 text-primary"><i class="fas fa-bullhorn me-2"></i>Top 5 Bài viết Chia sẻ</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="ps-4">#</th>
+                                    <th>Tiêu đề bài viết</th>
+                                    <th class="text-center">Lượt share</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($topSharedPosts as $index => $p)
+                                <tr>
+                                    <td class="ps-4 fw-bold text-muted">{{ $index + 1 }}</td>
+                                    <td>
+                                        <span class="d-block text-truncate" style="max-width: 250px;">{{ $p->title }}</span>
+                                        <small class="text-muted">ID: #{{ $p->postID }}</small>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill">
+                                            {{ number_format($p->shareCount) }} <i class="fas fa-share ms-1"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Top bài viết được share nhiều nhất -->
-    <h3 class="mt-4">📣 Top 5 bài viết nhiều Share</h3>
-    <table class="table table-bordered mt-2">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tiêu đề</th>
-                <th>Số Share</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($topSharedPosts as $p)
-            <tr>
-                <td>{{ $p->postID }}</td>
-                <td>{{ $p->title }}</td>
-                <td>{{ $p->shareCount }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    <!-- Món ăn theo category -->
-    <h3 class="mt-4">🍽 Số lượng món ăn theo Category</h3>
-    <table class="table table-bordered mt-2">
-        <thead>
-            <tr>
-                <th>Category</th>
-                <th>Số món</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($foodsByCategory as $c)
-            <tr>
-                <td>{{ $c->name }}</td>
-                <td>{{ $c->foodCount }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white border-0 py-3">
+            <h5 class="fw-bold mb-0 text-success"><i class="fas fa-chart-pie me-2"></i>Phân bố món ăn theo Danh mục</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                        <tr>
+                            <th width="30%">Tên danh mục</th>
+                            <th width="50%">Biểu đồ</th>
+                            <th width="20%" class="text-end">Số lượng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($foodsByCategory as $c)
+                        @php 
+                            $percent = $totalFoods > 0 ? ($c->foodCount / $totalFoods) * 100 : 0;
+                        @endphp
+                        <tr>
+                            <td class="fw-medium">{{ $c->name }}</td>
+                            <td>
+                                <div class="progress" style="height: 10px; border-radius: 10px;">
+                                    <div class="progress-bar bg-success" role="progressbar" 
+                                         aria-valuenow="{{ $percent }}" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-end">
+                                <span class="fw-bold">{{ $c->foodCount }}</span> món
+                                <small class="text-muted ms-1">({{ round($percent, 1) }}%)</small>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 </div>
-
   <!--Footer-->
   <div>
     @include('layouts.footer')

@@ -25,8 +25,25 @@ class SuggestionController extends Controller
 
         // 3. Truyền cả 2 biến sang view
         $user = User::where('id', Auth::id())->get()->first();
-        return view('suggestion', compact('ingredients', 'categories', 'user'));
+        return view('ingredientmanage', compact('ingredients', 'categories', 'user'));
     }
+
+    public function suggestingredient()
+    {
+        $ingredients = DB::table('ingredients')
+            ->leftJoin('categories', 'ingredients.category_id', '=', 'categories.categoryID')
+            ->select('ingredients.*', 'categories.name as category_name')
+            ->get();
+
+        // 2. Lấy danh sách danh mục (ĐÂY LÀ DÒNG BẠN ĐANG THIẾU)
+        // Biến này để hiển thị trong <select> modal
+        $categories = DB::table('categories')->get();
+
+        // 3. Truyền cả 2 biến sang view
+        $user = User::where('id', Auth::id())->get()->first();
+        return view('goiy', compact('ingredients', 'categories', 'user'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
