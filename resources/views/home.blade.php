@@ -26,6 +26,7 @@
       background: #f8f9fa
     }
   </style>
+  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 
 <body>
@@ -35,109 +36,116 @@
   </div>
 
   <!-- Background image -->
-  <!-- Carousel -->
-  <div id="demo" class="carousel slide" data-bs-ride="carousel">
-
-    <!-- Indicators/dots -->
+<div id="foodieCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#foodieCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#foodieCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#foodieCarousel" data-bs-slide-to="2"></button>
     </div>
 
-    <!-- The slideshow/carousel -->
     <div class="carousel-inner">
-      <!-- Slide 1 -->
-      <div class="carousel-item active">
-        <img src="{{ asset('images/homepage1.jpg') }}"
-          class="d-block w-100"
-          alt="Món ăn ngon"
-          style="height: 80vh; object-fit: cover;">
-        <div class="carousel-caption">
-          <h3>Món ngon mỗi ngày</h3>
-          <p>Hôm nay ăn gì? Khám phá ngay!</p>
+        <div class="carousel-item active">
+            <div class="overlay-dark"></div> <img src="{{ asset('images/homepage1.jpg') }}" class="d-block w-100 vh-80 object-fit-cover" alt="Món ngon">
+            <div class="carousel-caption d-none d-md-block animate__animated animate__fadeInUp">
+                <h2 class="display-4 fw-bold text-warning shadow-text">Món Ngon Mỗi Ngày</h2>
+                <p class="fs-4">Hôm nay ăn gì? Khám phá ngay thực đơn đa dạng!</p>
+                <a href="#" class="btn btn-warning btn-lg rounded-pill px-5 fw-bold mt-3">Khám phá ngay</a>
+            </div>
         </div>
 
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="carousel-item">
-        <img src="{{ asset('images/homepage2.jpg') }}"
-          class="d-block w-100"
-          alt="Ẩm thực Việt Nam"
-          style="height: 80vh; object-fit: cover;">
-        <div class="carousel-caption">
-          <h3>Đánh vào sự tiện lợi</h3>
-          <p>Bí ý tưởng bữa ăn? Để chúng tôi gợi ý món ngon cho bạn!</p>
+        <div class="carousel-item">
+            <div class="overlay-dark"></div>
+            <img src="{{ asset('images/homepage2.jpg') }}" class="d-block w-100 vh-80 object-fit-cover" alt="Tiện lợi">
+            <div class="carousel-caption d-none d-md-block animate__animated animate__fadeInUp">
+                <h2 class="display-4 fw-bold text-warning shadow-text">Tiện Lợi & Nhanh Chóng</h2>
+                <p class="fs-4">Bí ý tưởng? Để Foodie gợi ý giúp bạn chỉ trong 1 nốt nhạc.</p>
+                <a href="#" class="btn btn-outline-light btn-lg rounded-pill px-5 fw-bold mt-3">Xem gợi ý</a>
+            </div>
         </div>
-      </div>
 
-      <!-- Slide 3 -->
-      <div class="carousel-item">
-        <img src="{{ asset('images/homepage3.jpg') }}"
-          class="d-block w-100"
-          alt="Món ăn hấp dẫn"
-          style="height: 80vh; object-fit: cover;">
-        <div class="carousel-caption">
-          <h3>Nhấn mạnh sự đa dạng</h3>
-          <p>Thế giới ẩm thực trong tầm tay. Gợi ý món ăn phong phú, mới lạ mỗi ngày!</p>
+        <div class="carousel-item">
+            <div class="overlay-dark"></div>
+            <img src="{{ asset('images/homepage3.jpg') }}" class="d-block w-100 vh-80 object-fit-cover" alt="Đa dạng">
+            <div class="carousel-caption d-none d-md-block animate__animated animate__fadeInUp">
+                <h2 class="display-4 fw-bold text-warning shadow-text">Ẩm Thực Đa Dạng</h2>
+                <p class="fs-4">Kết nối đam mê, chia sẻ công thức nấu ăn độc đáo.</p>
+            </div>
         </div>
-      </div>
     </div>
 
-    <!-- Left and right controls/icons -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
+    <button class="carousel-control-prev" type="button" data-bs-target="#foodieCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-3"></span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
+    <button class="carousel-control-next" type="button" data-bs-target="#foodieCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-3"></span>
     </button>
-  </div>
-  <!-- Background image -->
-  </header>
+</div>
 
-  <section class="hero py-5 text-white">
-    <div class="container text-center">
-      <h1 class="h2 text-muted mb-3">Chào mừng bạn đến với Foodie!</h1>
-      <p class="text-muted mb-4">Bữa ăn tuyệt vời không phải là ngẫu nhiên, đó là một lựa chọn! — Chấm dứt sự phân vân, bắt đầu hành trình biến mọi nguyên liệu thành những kiệt tác ẩm thực với gợi ý món ăn đầy năng lượng từ chúng tôi.</p>
-      <a class="btn btn-primary" href="#">Bắt đầu</a>
-
-      <section class="py-4">
-        <div class="container">
-          <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-              <div class="card h-100">
-                <img src="{{ asset('images/vegetables.jpg') }}" class="card-img-top" alt="..." style="height: 250px; object-fit: cover;">
-                <div class="card-body">
-                  <h5 class="card-title">Rau củ quả</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-              </div>
+<section class="py-5 text-center bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <span class="text-warning fw-bold text-uppercase">Chào mừng bạn đến với Foodie</span>
+                <h1 class="mb-3 mt-2 fw-bold text-dark">Nấu Ăn Là Một Nghệ Thuật</h1>
+                <p class="text-muted lead mb-4">
+                    "Bữa ăn tuyệt vời không phải là ngẫu nhiên, đó là sự lựa chọn!" <br>
+                    Hãy để chúng tôi giúp bạn biến những nguyên liệu đơn giản thành kiệt tác ẩm thực.
+                </p>
+                <a class="btn btn-dark rounded-pill px-4 py-2" href="#">Bắt đầu hành trình <i class="fas fa-arrow-right ms-2"></i></a>
             </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{{ asset('images/meat.jpg') }}" class="card-img-top" alt="..." style="height: 250px; object-fit: cover;">
-                <div class="card-body">
-                  <h5 class="card-title">Thịt</h5>
-                  <p class="card-text">This is a short card.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card h-100">
-                <img src="{{ asset('images/fish.jpg') }}" class="card-img-top" alt="..." style="height: 250px; object-fit: cover;">
-                <div class="card-body">
-                  <h5 class="card-title">Cá</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
-
     </div>
-  </section>
+</section>
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Khám Phá Nguyên Liệu</h2>
+            <div class="divider mx-auto bg-warning"></div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm card-hover overflow-hidden">
+                    <div class="img-wrapper">
+                        <img src="{{ asset('images/vegetables.jpg') }}" class="card-img-top" alt="Rau củ">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Rau Củ Quả</h5>
+                        <p class="card-text text-muted small">Tươi ngon, giàu vitamin cho bữa ăn healthy.</p>
+                        <a href="#" class="btn btn-sm btn-outline-warning rounded-pill px-3">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm card-hover overflow-hidden">
+                    <div class="img-wrapper">
+                        <img src="{{ asset('images/meat.jpg') }}" class="card-img-top" alt="Thịt">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Thịt Tươi Sống</h5>
+                        <p class="card-text text-muted small">Nguồn protein chất lượng cao cho năng lượng mỗi ngày.</p>
+                        <a href="#" class="btn btn-sm btn-outline-warning rounded-pill px-3">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm card-hover overflow-hidden">
+                    <div class="img-wrapper">
+                        <img src="{{ asset('images/fish.jpg') }}" class="card-img-top" alt="Hải sản">
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Hải Sản & Cá</h5>
+                        <p class="card-text text-muted small">Hương vị biển cả tươi mới trong từng món ăn.</p>
+                        <a href="#" class="btn btn-sm btn-outline-warning rounded-pill px-3">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
   <!--Footer-->
   <div>

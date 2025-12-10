@@ -1,4 +1,451 @@
 /* navigation  */
+/* Navbar Styling */
+.navbar {
+    backdrop-filter: blur(10px); /* Hiệu ứng kính mờ nếu nền trang có màu */
+    transition: all 0.3s ease;
+}
+
+/* Logo Text */
+.navbar-brand span {
+    font-family: 'Poppins', sans-serif; /* Hoặc font chữ bạn đang dùng */
+    font-size: 1.25rem;
+}
+
+/* Menu Links */
+.nav-link {
+    color: #555;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #ff6b6b !important; /* Màu chủ đạo (ví dụ màu đỏ cam Foodie) */
+}
+
+/* Hiệu ứng gạch chân nhỏ khi hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 5px;
+    left: 50%;
+    background-color: #ff6b6b;
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 80%; /* Độ dài gạch chân */
+}
+
+/* Search Bar Styling */
+.search-form input:focus {
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2); /* Glow nhẹ khi click vào */
+    background-color: #fff !important;
+}
+
+/* Dropdown Menu đẹp hơn */
+.dropdown-item:hover {
+    background-color: #fff0f0; /* Màu nền nhẹ khi hover dropdown */
+    color: #ff6b6b;
+}
+
+/* Mobile responsive fix */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: white;
+        padding: 1rem;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    .search-form {
+        margin: 10px 0;
+        width: 100%;
+    }
+}
+
+/* Footer Styling */
+.footer-foodie {
+    background-color: #1a1a1a; /* Màu đen xám sang trọng */
+    color: #b0b0b0; /* Màu chữ xám nhạt cho đỡ mỏi mắt */
+    font-size: 0.9rem;
+}
+
+.footer-foodie h5, 
+.footer-foodie h6 {
+    letter-spacing: 1px;
+}
+
+/* Màu vàng cam chủ đạo cho tiêu đề (cùng tông với nút Foodie) */
+.text-warning {
+    color: #ff6b6b !important; 
+}
+
+.btn-warning {
+    background-color: #ff6b6b !important;
+    border-color: #ff6b6b !important;
+    color: white !important;
+}
+
+.btn-warning:hover {
+    background-color: #ff5252 !important;
+}
+
+/* Hiệu ứng hover cho link */
+.footer-link {
+    display: inline-block;
+    transition: all 0.3s ease;
+    position: relative;
+    color: #d1d1d1 !important;
+}
+
+.footer-link:hover {
+    color: #ff6b6b !important; /* Đổi màu khi di chuột */
+    transform: translateX(5px); /* Dịch chuyển nhẹ sang phải */
+    text-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+}
+
+/* Nút Social Media tròn */
+.btn-floating {
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    transition: all 0.3s;
+}
+
+.btn-floating:hover {
+    background-color: #ff6b6b;
+    border-color: #ff6b6b;
+    color: white;
+    transform: translateY(-3px); /* Nổi lên khi hover */
+}
+
+/* 1. Carousel Styles */
+.vh-80 {
+    height: 80vh; /* Chiều cao slider chiếm 80% màn hình */
+}
+
+.object-fit-cover {
+    object-fit: cover; /* Ảnh không bị méo */
+}
+
+/* Lớp phủ tối để chữ dễ đọc hơn trên nền ảnh */
+.carousel-item {
+    position: relative;
+}
+
+.overlay-dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)); /* Hiệu ứng tối dần xuống dưới */
+    z-index: 1;
+}
+
+.carousel-caption {
+    z-index: 2;
+    bottom: 20%; /* Đẩy chữ lên cao một chút cho cân đối */
+}
+
+.shadow-text {
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+/* 2. Button Styles */
+.btn-warning {
+    background-color: #ff6b6b !important;
+    border-color: #ff6b6b !important;
+    color: white !important;
+}
+.btn-outline-warning {
+    color: #ff6b6b !important;
+    border-color: #ff6b6b !important;
+}
+.btn-outline-warning:hover {
+    background-color: #ff6b6b !important;
+    color: white !important;
+}
+
+/* 3. Card Styles & Hover Animation */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px !important; /* Bo tròn góc card */
+}
+
+.card-hover:hover {
+    transform: translateY(-10px); /* Card bay lên nhẹ khi hover */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+.img-wrapper {
+    height: 250px;
+    overflow: hidden; /* Để ảnh zoom không bị tràn ra ngoài */
+    border-radius: 15px 15px 0 0;
+}
+
+.card-img-top {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease; /* Hiệu ứng zoom mượt */
+}
+
+.card-hover:hover .card-img-top {
+    transform: scale(1.1); /* Zoom ảnh to lên 10% */
+}
+
+/* Divider trang trí */
+.divider {
+    height: 4px;
+    width: 60px;
+    margin-top: 10px;
+    border-radius: 2px;
+    background-color: #ff6b6b;
+}
+
+
+/* --- ABOUT PAGE STYLES --- */
+
+/* 1. Banner Section */
+.about-banner {
+    /* Thay ảnh nền banner của bạn vào đây */
+    background-image: url('../images/homepage1.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Hiệu ứng parallax nhẹ */
+    height: 400px;
+    position: relative;
+}
+
+/* 2. Image Stack (Hiệu ứng 2 ảnh chồng lên nhau) */
+.image-stack {
+    position: relative;
+    padding-bottom: 30px; /* Chừa chỗ cho ảnh nhỏ */
+}
+
+.img-main {
+    width: 100%;
+    height: auto;
+}
+
+.img-small {
+    width: 50%;
+    bottom: -30px;
+    right: -20px;
+    z-index: 2;
+}
+
+/* 3. Features Icons */
+.icon-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 4. Contact Icons */
+.icon-square {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff6b6b !important; /* Màu chủ đạo */
+}
+
+/* 5. Typography Utility */
+.ls-2 {
+    letter-spacing: 2px;
+}
+.text-warning {
+    color: #ff6b6b !important; /* Ghi đè màu vàng mặc định của Bootstrap thành màu cam đỏ */
+}
+
+/* --- Meal Card Styling --- */
+.card-meal {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    background: white;
+}
+
+.card-meal:hover {
+    transform: translateY(-5px); /* Nổi lên khi hover */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+
+.meal-img {
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Hiệu ứng zoom ảnh khi hover */
+.card-meal:hover .meal-img {
+    transform: scale(1.1);
+}
+
+/* Overlay nút xem nhanh */
+.overlay-action {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.card-meal:hover .overlay-action {
+    opacity: 1;
+}
+
+/* --- Modal Styling --- */
+.border-bottom-dashed {
+    border-bottom: 1px dashed #dee2e6 !important;
+}
+
+.instruction-text {
+    font-size: 1.05rem;
+    color: #444;
+}
+
+/* Nút đóng modal nổi lên trên ảnh */
+.absolute-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1050;
+    width: auto;
+}
+
+/* Thanh cuộn đẹp cho modal (Webkit browsers) */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+/* Animation nhẹ khi hiện kết quả */
+.fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Dashboard Styling --- */
+
+/* Stat Card */
+.stat-card {
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px); /* Nổi lên khi di chuột */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+/* Icon Box trong card thống kê */
+.icon-box {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+/* Màu nền nhạt cho Badge và Icon (Bootstrap Subtle colors support) */
+.bg-primary-subtle { background-color: #cfe2ff; }
+.bg-success-subtle { background-color: #d1e7dd; }
+.bg-info-subtle { background-color: #cff4fc; }
+.bg-warning-subtle { background-color: #fff3cd; }
+.bg-danger-subtle { background-color: #f8d7da; }
+.bg-dark-subtle { background-color: #ced4da; }
+
+/* Table Styling */
+.table thead th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: #6c757d;
+    letter-spacing: 0.5px;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.progress {
+    background-color: #e9ecef;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Tùy chỉnh hiệu ứng khi click vào ô nhập liệu */
+.form-floating .form-control:focus {
+    border-color: #ff6b6b; /* Đổi viền xanh mặc định thành màu cam */
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 107, 0.25); /* Hiệu ứng tỏa sáng màu cam */
+}
+
+/* Đổi màu checkbox khi tick */
+.form-check-input:checked {
+    background-color: #ff6b6b;
+    border-color: #ff6b6b;
+}
+
+/* Hiệu ứng hover cho nút Đăng nhập */
+button[type="submit"]:hover {
+    background-color: #ff5252 !important; /* Đậm hơn một chút khi di chuột */
+    transform: translateY(-2px); /* Nổi lên nhẹ */
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4) !important;
+}
+
+/* Custom CSS cho trang Auth (Login/Register) */
+
+/* Màu cam chủ đạo khi focus vào ô input */
+.form-floating .form-control:focus {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 107, 0.25);
+}
+
+/* Hiệu ứng hover cho nút Submit */
+button[type="submit"]:hover {
+    background-color: #ff5252 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4) !important;
+}
+
+/* Link màu cam */
+a[href*="login"], a[href*="register"] {
+    transition: color 0.2s;
+}
+a[href*="login"]:hover, a[href*="register"]:hover {
+    text-decoration: underline !important;
+    color: #e04f4f !important;
+}
+
+
 .navbar .nav-search input {
     border-radius: 20px;
     outline: 0;
@@ -350,3 +797,4 @@
 .profile .left .post .interaction .detail {
     margin-top: 7px;
 }
+

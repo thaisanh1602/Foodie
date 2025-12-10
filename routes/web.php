@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AdminStatisticController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\HomeController;
@@ -16,7 +17,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/suggestion', [SuggestionController::class, 'index'])->name('suggestion');
+Route::get('/suggestion', [SuggestionController::class, 'index'])->name('categorymanage');
+Route::get('/suggest-ingredient', [SuggestionController::class, 'suggestingredient'])->name('suggest.ingredient');
 // Route::get('/statistic', [StatisticController::class, 'index'])->name('statistic');
 Route::get('/community', [CommunityController::class, 'index'])->name('community');
 
@@ -64,3 +66,6 @@ Route::get('/statistic', [AdminStatisticController::class, 'index'])->name('stat
 use App\Http\Controllers\CategoryController;
 // Route này sẽ tạo đủ các link: index, create, store, edit, update, destroy
 Route::resource('categories', CategoryController::class);
+
+//About us
+Route::get('/aboutus', [AboutUsController::class, 'index'])->name('aboutus');

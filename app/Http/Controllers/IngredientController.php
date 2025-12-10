@@ -12,7 +12,6 @@ class IngredientController extends Controller
      */
     public function index()
     {
-        // Hàm này của bạn ĐÃ ĐÚNG. Giữ nguyên.
         $ingredients = DB::table('ingredients')
             ->leftJoin('categories', 'ingredients.category_id', '=', 'categories.categoryID')
             ->select(

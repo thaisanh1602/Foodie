@@ -24,7 +24,6 @@ class FoodController extends Controller
         }
 
         $user = User::where('id', Auth::id())->get()->first();
-        // Trả về view quản lý danh mục (bạn cần tạo file view này)
         return view('goiy', compact('ingredients', 'user'));
     }
 
@@ -89,8 +88,6 @@ class FoodController extends Controller
             }
         }
         $user = User::where('id', Auth::id())->get()->first();
-        // Trả về view quản lý danh mục (bạn cần tạo file view này)
         return view('result',['meals' => $finalMeals], compact('user'));
-        // return view('', ['meals' => $finalMeals]);
     }
 }

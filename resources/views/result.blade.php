@@ -35,53 +35,112 @@
   </div>
 
 
-<h3>Kết quả gợi ý</h3>
 @if(!empty($meals))
-    <div class="row g-3">
-        @foreach($meals as $meal)
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="{{ $meal['strMealThumb'] }}" class="card-img-top" alt="{{ $meal['strMeal'] }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $meal['strMeal'] }}</h5>
+    <div class="result-section py-4">
+        <h4 class="mb-4 fw-bold text-dark border-start border-4 border-warning ps-3">
+            <i class="fas fa-utensils me-2 text-warning"></i> Kết quả dành cho bạn
+        </h4>
 
-                        <!-- Nút mở modal -->
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#mealModal{{ $meal['idMeal'] }}">
-                            Xem công thức
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="mealModal{{ $meal['idMeal'] }}" tabindex="-1" aria-labelledby="mealModalLabel{{ $meal['idMeal'] }}" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="mealModalLabel{{ $meal['idMeal'] }}">{{ $meal['strMeal'] }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="row g-4">
+            @foreach($meals as $meal)
+                <div class="col-md-6 col-lg-4 fade-in-up">
+                    <div class="card h-100 border-0 shadow-sm card-meal">
+                        
+                        <div class="position-relative overflow-hidden rounded-top-3">
+                            <img src="{{ $meal['strMealThumb'] }}" 
+                                 class="card-img-top meal-img transition-zoom" 
+                                 alt="{{ $meal['strMeal'] }}">
+                            <div class="overlay-action d-flex align-items-center justify-content-center">
+                                <button type="button" class="btn btn-light rounded-circle shadow btn-lg text-warning" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#mealModal{{ $meal['idMeal'] }}"
+                                        title="Xem chi tiết">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <h6>Nguyên liệu:</h6>
-                            <ul>
-                                @foreach($meal['ingredientsList'] as $item)
-                                    <li>{{ $item }}</li>
-                                @endforeach
-                            </ul>
 
-                            <h6>Hướng dẫn:</h6>
-                            <p style="white-space: pre-line;">{{ $meal['strInstructions'] }}</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <div class="card-body text-center d-flex flex-column">
+                            <h5 class="card-title fw-bold text-truncate mb-3" title="{{ $meal['strMeal'] }}">
+                                {{ $meal['strMeal'] }}
+                            </h5>
+                            
+                            <button type="button" 
+                                    class="btn btn-outline-warning rounded-pill mt-auto fw-medium w-100" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#mealModal{{ $meal['idMeal'] }}">
+                                Xem công thức <i class="fas fa-arrow-right ms-1"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+
+                <div class="modal fade" id="mealModal{{ $meal['idMeal'] }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content border-0 overflow-hidden rounded-4">
+                            
+                            <div class="modal-header border-0 pb-0 absolute-close">
+                                <button type="button" class="btn-close bg-white p-2 rounded-circle shadow-sm opacity-100" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <div class="modal-body p-0">
+                                <div class="row g-0 h-100">
+                                    <div class="col-lg-5 bg-light border-end">
+                                        <div class="p-0 position-relative">
+                                            <img src="{{ $meal['strMealThumb'] }}" class="w-100 object-fit-cover" style="height: 300px;" alt="{{ $meal['strMeal'] }}">
+                                            <div class="p-4">
+                                                <h3 class="fw-bold text-dark mb-3">{{ $meal['strMeal'] }}</h3>
+                                                <h6 class="text-uppercase text-warning fw-bold mb-3">
+                                                    <i class="fas fa-carrot me-2"></i> Nguyên liệu
+                                                </h6>
+                                                
+                                                <ul class="list-group list-group-flush rounded-3">
+                                                    @foreach($meal['ingredientsList'] as $item)
+                                                        <li class="list-group-item bg-transparent d-flex align-items-center px-0 py-2 border-bottom-dashed">
+                                                            <i class="fas fa-check-circle text-success me-3"></i>
+                                                            <span class="fw-medium text-secondary">{{ $item }}</span>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-7">
+                                        <div class="p-4 h-100 overflow-auto">
+                                            <h6 class="text-uppercase text-warning fw-bold mb-3 sticky-top bg-white py-2">
+                                                <i class="fas fa-book-open me-2"></i> Hướng dẫn chế biến
+                                            </h6>
+                                            
+                                            <div class="instruction-text text-secondary lh-lg" style="text-align: justify;">
+                                                {!! nl2br(e($meal['strInstructions'])) !!}
+                                            </div>
+
+                                            <div class="mt-5 text-center">
+                                                <p class="text-muted fst-italic small">Chúc bạn thành công với món ăn này!</p>
+                                                <button type="button" class="btn btn-dark rounded-pill px-4" data-bs-dismiss="modal">Đóng cửa sổ</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
 @else
-    <p>Không tìm thấy món nào phù hợp!</p>
+    <div class="text-center py-5 animate__animated animate__fadeIn">
+        <div class="mb-3">
+            <i class="fas fa-search fa-4x text-muted opacity-25"></i>
+        </div>
+        <h4 class="fw-bold text-secondary">Rất tiếc, không tìm thấy món phù hợp!</h4>
+        <p class="text-muted">Hãy thử chọn lại các nguyên liệu khác xem sao nhé.</p>
+        <a href="{{ route('suggest.ingredient') }}" class="btn btn-warning rounded-pill px-4 text-white">
+            <i class="fas fa-redo me-2"></i> Chọn lại
+        </a>
+    </div>
 @endif
 
 
